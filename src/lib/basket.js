@@ -9,17 +9,17 @@ import { writable} from "svelte/store";
         quantity: number,
     }
  */
-let local;
+const key = "basket";
 
-// Aurgh
+let local = [];
 try {
-    local = JSON.parse(localStorage.getItem("basket"));
+    local = JSON.parse(localStorage.getItem(key));
 } catch (e) {
-    local = [];
+    localStorage.setItem(key, JSON.stringify([]));
 }
 
 export const basket = writable(local);
 
 basket.subscribe((value) => {
-    localStorage.setItem("basket", JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(value));
 });
