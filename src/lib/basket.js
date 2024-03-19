@@ -11,13 +11,7 @@ import { writable} from "svelte/store";
  */
 const key = "basket";
 
-let local;
-try {
-    local = JSON.parse(localStorage.getItem(key));
-} catch (e) {
-    local = [];
-    localStorage.setItem(key, JSON.stringify([]));
-}
+const local = JSON.parse(localStorage.getItem(key)) || [];
 
 export const basket = writable(local);
 
