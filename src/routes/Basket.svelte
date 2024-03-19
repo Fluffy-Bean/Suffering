@@ -41,7 +41,7 @@
 
     <hr>
 
-    {#if $basket.length === 0}
+    {#if !$basket}
         <p>No items in basket</p>
     {:else}
         <p>Here are the items in your basket:</p>
